@@ -23,18 +23,27 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            options: {
-              minimize: true,
-            },
-          },
-        ],
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
       },
+      {
+        test: /\.(ttf|woff)$/,
+        use: {
+          loader: "file-loader",
+        },
+      },
+      // {
+      //   test: /\.html$/,
+      //   use: [
+      //     {
+      //       loader: "html-loader",
+      //       options: {
+      //         minimize: true,
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
 
