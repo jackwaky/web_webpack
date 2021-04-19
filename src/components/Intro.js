@@ -15,6 +15,28 @@ import whatwedo from "../images/whatwedo.png";
 import weebut from "../images/weebut.png";
 import help from "../images/Help.png";
 
+//For test React Graph 1.react-vis
+// import {
+//   XYPlot,
+//   XAxis,
+//   YAxis,
+//   VerticalGridLines,
+//   HorizontalGridLines,
+//   LineSeries,
+//   VerticalBarSeries,
+// } from "react-vis";
+// import "../../node_modules/react-vis/dist/style.css";
+
+//For test React Graph 2.Victory
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryContainer,
+} from "victory";
+
+import Graph from "./Graph";
+
 function Intro() {
   const [color, setcolor] = useState("white");
 
@@ -23,32 +45,89 @@ function Intro() {
   };
 
   return (
-    <Container imgUrl={bg}>
-      <Contents>
-        <Row flex={100}></Row>
-        <Column flex={740}>
-          <Row flex={50}>
-            <Row flex={570}>
-              <Logo src={logo}></Logo>
-            </Row>
-            <Row flex={750} color={color}>
-              <Whatwedo onClick={changeColor}>What we do</Whatwedo>
-              <Who>who we are</Who>
-              <Contact>contact</Contact>
-              <Ending>ending</Ending>
-            </Row>
-          </Row>
-          <ColumnRev flex={690}>
-            <Weebut src={weebut} alt="Weebut"></Weebut>
-          </ColumnRev>
-        </Column>
-        <Column flex={240}>
-          <Help src={help} alt="Help Lung cancer"></Help>
-        </Column>
-      </Contents>
-    </Container>
+    // <Container imgUrl={bg}>
+    //   <Contents>
+    //     <Row flex={100}></Row>
+    //     <Column flex={740}>
+    //       <Row flex={50}>
+    //         <Row flex={570}>
+    //           <Logo src={logo}></Logo>
+    //         </Row>
+    //         <Row flex={750} color={color}>
+    //           <Whatwedo onClick={changeColor}>What we do</Whatwedo>
+    //           <Who>who we are</Who>
+    //           <Contact>contact</Contact>
+    //           <Ending>ending</Ending>
+    //         </Row>
+    //       </Row>
+    //       <ColumnRev flex={690}>
+    //         <Weebut src={weebut} alt="Weebut"></Weebut>
+    //       </ColumnRev>
+    //     </Column>
+    //     <Column flex={240}>
+    //       <Help src={help} alt="Help Lung cancer"></Help>
+    //     </Column>
+    //   </Contents>
+    // </Container>
+    <Graph />
   );
 }
+
+const Time = styled.span`
+  width: 6.111vw;
+  height: 1.75vh;
+  font-size: 0.595vw;
+
+  margin-left: auto;
+  text-align: center;
+  line-height: 1.75vh;
+
+  color: #c4c4c4;
+`;
+
+const DiseaseName = styled.span`
+  width: 6.52vw;
+  height: 5.625vh;
+  font-size: 1.904vw;
+
+  margin-left: auto;
+  text-align: center;
+  line-height: 5.625vh;
+
+  color: #8c858e;
+`;
+
+const Percentage = styled.span`
+  width: 2.986vw;
+  height: 3.5vh;
+  font-size: 1.19vw;
+
+  margin-left: auto;
+  text-align: center;
+  line-height: 3.5vh;
+
+  color: #8c858e;
+`;
+
+const DiseaseContainer = styled.div`
+  /* padding-left: 9.58vw; */
+  /* padding-right: 1.667vw; */
+  /* padding-top: 4.75vh;
+  padding-bottom: 19.375vh; */
+
+  /* padding-left: 138px; */
+  padding-right: 24px;
+`;
+
+const GraphContainer = styled.div`
+  display: flex;
+
+  width: 17.778vw;
+  height: 29.75vh;
+  aspect-ratio: 256/ 238;
+
+  flex-direction: column;
+`;
 
 const Weebut = styled.img`
   width: 26.5625vw;

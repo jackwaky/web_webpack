@@ -7,6 +7,9 @@ const Container = styled.div`
   width: 100vw;
   background-size: cover;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 //좌우를 뺀 중앙
@@ -36,9 +39,11 @@ const ColumnRev = styled.div`
 const Row = styled.div`
   display: flex;
   flex: ${(props) => props.flex};
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
+  flex-direction: ${(props) => props.flexdir};
+  justify-content: flex-end;
+  background-size: cover;
+  overflow-y: hidden;
+  /* position: relative; */
 
   color: ${(props) => props.color};
   font-size: 1.041vw;
