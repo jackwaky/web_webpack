@@ -1,5 +1,5 @@
 import { Container, Row } from "../components/Grid";
-import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTooltip } from "victory";
 
 import styled from "styled-components";
 import data from "./data.json";
@@ -21,7 +21,7 @@ function Graph() {
   });
 
   const maxValue = Math.max(...persentage);
-  //   const maxDisease = null;
+
   let temp = 0;
   let x_ = 0;
   array.map((da) => {
@@ -31,10 +31,16 @@ function Graph() {
     }
   });
 
-  //   console.log(maxDisease);
-  //   const disValue = array(maxValue);
+  //sort data by ascending order
+  const Sort = (a, b) => {
+    if (a.y == b.y) {
+      return 0;
+    }
+    return a.y > b.y ? -1 : 1;
+  };
+  array.sort(Sort);
 
-  console.log(array[0]);
+  console.log(array);
 
   return (
     <Container>
@@ -53,8 +59,8 @@ function Graph() {
             // padding={{ top: -100, bottom: 150, right: 30, left: 30 }}
           >
             <VictoryBar
+              labelComponent={<VictoryTooltip />}
               barRatio={0.8}
-              categories={{ x: disease }}
               data={array}
               barWidth={20}
               style={{
@@ -63,7 +69,33 @@ function Graph() {
                     datum.y === maxValue ? "#8c858e" : "#c4c4c4",
                 },
               }}
+              labels={({ datum }) => datum.y}
               cornerRadius={{ top: 5, bottom: 5 }}
+              // events={[
+              //   {
+              //     target: "data",
+              //     eventHandlers: {
+              //       onMouseOver: () => {
+              //         return [
+              //           {
+              //             target: "data",
+              //             mutation: () => ({
+              //               style: { fill: "#5e5561" },
+              //             }),
+              //           },
+              //         ];
+              //       },
+              //       onMouseOut: () => {
+              //         return [
+              //           {
+              //             target: "data",
+              //             mutation: () => ({ active: false }),
+              //           },
+              //         ];
+              //       },
+              //     },
+              //   },
+              // ]}
             />
             <VictoryAxis
               style={{
